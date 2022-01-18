@@ -2,16 +2,27 @@ version: "3"
 
 services: 
   valheim: 
-    image: ghcr.io/lloesche/valheim-server
+    image: ghcr.io/lloesche/valheim-server # https://github.com/lloesche/valheim-server-docker
     cap_add:
       - sys_nice
     volumes: 
       - ./config:/config
       - ./data:/opt/valheim
+      - ./backups:/backups
     ports: 
       - "2456-2457:2456-2457/udp"
       - "9001:9001/tcp"
     env_file:
       - ./valheim.env
+    environment:
+      SERVER_NAME: Valhalla
+      SERVER_PORT: 2456
+      WORLD_NAME: Dedicated
+      SERVER_PASS: secret # TODO: Replace this
+      SERVER_PUBLIC: false
+      RESTART_IF_IDLE: true
+      BACKUPS: true
+      BACKUPS_CRON: 0 * * * *
+      BACKUPS_DIRECTORY: /backups
     restart: always
     stop_grace_period: 2m
