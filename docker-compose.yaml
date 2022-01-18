@@ -19,14 +19,14 @@ services:
       SERVER_PORT: 2456
       WORLD_NAME: Dedicated
       SERVER_PASS: secret # TODO: Replace this
-      SERVER_PUBLIC: false
-      RESTART_IF_IDLE: true
-      BACKUPS: true
+      SERVER_PUBLIC: 'false'
+      RESTART_IF_IDLE: 'true'
+      BACKUPS: 'true'
       BACKUPS_CRON: 0 * * * *
       BACKUPS_DIRECTORY: /backup
       BACKUPS_MAX_AGE: 3
       BACKUPS_MAX_COUNT: 0
-      BACKUPS_IF_IDLE: false
-      BACKUPS_ZIP: true
+      BACKUPS_IF_IDLE: 'false'
+      BACKUPS_ZIP: 'true'
     restart: always
     stop_grace_period: 2m
