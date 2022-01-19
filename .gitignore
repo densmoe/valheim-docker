@@ -2,4 +2,4 @@ backups/*
 data/*
 opt/*
 
-valheim.env
+./valheim.env
