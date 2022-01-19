@@ -18,7 +18,7 @@ services:
       SERVER_NAME: Valhalla
       SERVER_PORT: 2456
       WORLD_NAME: Dedicated
-      SERVER_PASS: secret # TODO: Replace this
+      # SERVER_PASS: secret # use env file for this
       SERVER_PUBLIC: 'false'
       RESTART_IF_IDLE: 'true'
       BACKUPS: 'true'
