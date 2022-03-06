@@ -31,7 +31,7 @@ services:
       BACKUPS_ZIP: 'true'
     restart: always
     stop_grace_period: 2m
-  valheim: 
+  valheim_old: 
     container_name: valheim-old
     image: ghcr.io/lloesche/valheim-server # https://github.com/lloesche/valheim-server-docker
     cap_add:
