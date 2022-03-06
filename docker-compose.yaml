@@ -46,7 +46,7 @@ services:
     env_file:
       - ./valheim.env
     environment:
-      SERVER_NAME: Valhalla
+      SERVER_NAME: Valhalla-Old
       SERVER_PORT: 2458
       WORLD_NAME: Dedicated
       # SERVER_PASS: secret # use env file for this
