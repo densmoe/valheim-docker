@@ -2,6 +2,7 @@ version: "3"
 
 services: 
   valheim: 
+    container_name: valheim
     image: ghcr.io/lloesche/valheim-server # https://github.com/lloesche/valheim-server-docker
     cap_add:
       - sys_nice
@@ -30,3 +31,34 @@ services:
       BACKUPS_ZIP: 'true'
     restart: always
     stop_grace_period: 2m
+  valheim: 
+    container_name: valheim-old
+    image: ghcr.io/lloesche/valheim-server # https://github.com/lloesche/valheim-server-docker
+    cap_add:
+      - sys_nice
+    volumes: 
+      - ./old/config:/config
+      - ./old/data:/opt/valheim
+      - ./old/backup:/backup
+    ports: 
+      - "2458-2459:2458-2459/udp"
+      - "9002:9001/tcp"
+    env_file:
+      - ./valheim.env
+    environment:
+      SERVER_NAME: Valhalla
+      SERVER_PORT: 2458
+      WORLD_NAME: Dedicated
+      # SERVER_PASS: secret # use env file for this
+      SERVER_PUBLIC: 'false'
+      RESTART_IF_IDLE: 'true'
+      BACKUPS: 'true'
+      BACKUPS_CRON: 0 * * * *
+      BACKUPS_DIRECTORY: /backup
+      BACKUPS_MAX_AGE: 3
+      BACKUPS_MAX_COUNT: 0
+      BACKUPS_IF_IDLE: 'false'
+      BACKUPS_ZIP: 'true'
+    restart: always
+    stop_grace_period: 2m
+  
